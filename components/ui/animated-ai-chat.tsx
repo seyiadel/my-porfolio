@@ -647,8 +647,8 @@ export function AnimatedAIChat() {
                                     className="inline-block"
                                 >
                                     <h1 className={cn(
-                                        "text-4xl font-mono font-bold tracking-tight bg-clip-text text-transparent pb-1",
-                                        theme === 'dark' ? "bg-gradient-to-r from-white to-white/60" : "bg-gradient-to-r from-foreground to-foreground/60"
+                                        "text-4xl font-mono font-bold tracking-tight pb-1",
+                                        theme === 'dark' ? "text-white" : "text-foreground"
                                     )}>
                                         Hi, I'm Seyi Adeleye
                                     </h1>
@@ -665,7 +665,7 @@ export function AnimatedAIChat() {
                                 <motion.p 
                                     className={cn(
                                         "text-sm font-mono max-w-lg leading-relaxed",
-                                        theme === 'dark' ? "text-white/60" : "text-foreground/80"
+                                        theme === 'dark' ? "text-white/60" : "text-foreground"
                                     )}
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
@@ -709,7 +709,7 @@ export function AnimatedAIChat() {
                                     )}
                                     <div className={cn(
                                         "text-[9px] mt-1 pl-1 font-mono tracking-wider",
-                                        theme === 'dark' ? "text-white/40" : "text-foreground/50"
+                                        theme === 'dark' ? "text-white/40" : "text-foreground/70"
                                     )}>
                                         {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                                     </div>
@@ -746,7 +746,7 @@ export function AnimatedAIChat() {
                             <div className="w-2.5 h-2.5 rounded-full bg-green-500/20 border border-green-500/40" />
                             <span className={cn(
                                 "ml-2 text-[10px] font-mono tracking-wider uppercase",
-                                theme === 'dark' ? "text-white/40" : "text-foreground/60"
+                                theme === 'dark' ? "text-white/40" : "text-foreground/80"
                             )}><span className="hidden sm:inline">Seyi_</span>Terminal_v1.0.4</span>
                             <div className="ml-auto flex items-center gap-2 pr-2">
                                 <motion.div 
@@ -949,7 +949,7 @@ export function AnimatedAIChat() {
                                 <span className="text-violet-400 group-hover:text-violet-300">$</span>
                                 <span className={cn(
                                     "px-0.5 transition-colors",
-                                    theme === 'dark' ? "text-white/60 group-hover:text-white" : "text-foreground/60 group-hover:text-foreground"
+                                    theme === 'dark' ? "text-white/60 group-hover:text-white" : "text-foreground/80 group-hover:text-foreground"
                                 )}>{suggestion.label.toLowerCase()}</span>
                                 <span className="opacity-40 group-hover:opacity-100 transition-opacity">{']'}</span>
                             </motion.button>
@@ -1000,49 +1000,7 @@ function TypingDots() {
     );
 }
 
-interface ActionButtonProps {
-    icon: React.ReactNode;
-    label: string;
-}
 
-function ActionButton({ icon, label }: ActionButtonProps) {
-    const [isHovered, setIsHovered] = useState(false);
-    
-    return (
-        <motion.button
-            type="button"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.97 }}
-            onHoverStart={() => setIsHovered(true)}
-            onHoverEnd={() => setIsHovered(false)}
-            className="flex items-center gap-2 px-4 py-2 bg-neutral-900 hover:bg-neutral-800 rounded-full border border-neutral-800 text-neutral-400 hover:text-white transition-all relative overflow-hidden group"
-        >
-            <div className="relative z-10 flex items-center gap-2">
-                {icon}
-                <span className="text-xs relative z-10">{label}</span>
-            </div>
-            
-            <AnimatePresence>
-                {isHovered && (
-                    <motion.div 
-                        className="absolute inset-0 bg-gradient-to-r from-violet-500/10 to-indigo-500/10"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                    />
-                )}
-            </AnimatePresence>
-            
-            <motion.span 
-                className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-violet-500 to-indigo-500"
-                initial={{ width: 0 }}
-                whileHover={{ width: "100%" }}
-                transition={{ duration: 0.3 }}
-            />
-        </motion.button>
-    );
-}
 
 const rippleKeyframes = `
 @keyframes ripple {
