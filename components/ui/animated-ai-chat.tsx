@@ -855,7 +855,7 @@ export function AnimatedAIChat() {
                                     "border-none",
                                     theme === 'dark' ? "text-white/90" : "text-foreground/90",
                                     "focus:outline-none",
-                                    theme === 'dark' ? "placeholder:text-white/50" : "placeholder:text-foreground/50",
+                                    theme === 'dark' ? "placeholder:text-white/50" : "placeholder:text-foreground/70",
                                     "min-h-[44px]"
                                 )}
                                 style={{
